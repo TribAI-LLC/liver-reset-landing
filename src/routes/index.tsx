@@ -10,8 +10,6 @@ import resetChecklist from "@/assets/reset_checklist.png";
 import weeklyGrocery from "@/assets/weekly_grocery.png";
 import guaranteeIcon from "@/assets/garantia.png";
 
-type MetaPixelTrack = (eventName: string, parameters?: Record<string, unknown>) => void;
-
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
@@ -106,20 +104,6 @@ function Index() {
   const corePrice = 5.99;
   const bundlePrice = 15.99;
   const bundleValue = 22.93;
-
-  const trackMetaPixel: MetaPixelTrack = (eventName, parameters) => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const fbq = (window as Window & {
-      fbq?: (action: string, eventName: string, parameters?: Record<string, unknown>) => void;
-    }).fbq;
-
-    if (typeof fbq === "function") {
-      fbq("track", eventName, parameters);
-    }
-  };
 
   const bundleSavings = useMemo(() => {
     const pct = Math.round(((bundleValue - bundlePrice) / bundleValue) * 100);
@@ -312,15 +296,6 @@ function Index() {
                 className="lp-btn lp-btn-light"
                 target="_blank"
                 rel="noreferrer"
-                onClick={() =>
-                  trackMetaPixel("ViewContent", {
-                    content_name: "Practical Manual to Improve Liver Health in 30 Days",
-                    content_type: "product",
-                    content_category: "offer",
-                    currency: "USD",
-                    value: corePrice,
-                  })
-                }
               >
                 I Want the Ebook Now
               </a>
@@ -343,15 +318,6 @@ function Index() {
                 className="lp-btn lp-btn-accent"
                 target="_blank"
                 rel="noreferrer"
-                onClick={() =>
-                  trackMetaPixel("ViewContent", {
-                    content_name: "Your Ultimate Liver Health Collection",
-                    content_type: "product",
-                    content_category: "offer",
-                    currency: "USD",
-                    value: bundlePrice,
-                  })
-                }
               >
                 I Want the Complete Bundle
               </a>
