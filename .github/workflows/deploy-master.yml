@@ -33,8 +33,9 @@ jobs:
           set -e
           PNPM_VERSION=$(node -p "require('./package.json').packageManager.match(/^pnpm@([^+]+)/)[1]")
           npm install --global "pnpm@${PNPM_VERSION}"
-          NPM_GLOBAL_BIN=$(npm bin --global)
+          NPM_GLOBAL_BIN="$(npm config get prefix)/bin"
           echo "$NPM_GLOBAL_BIN" >> "$GITHUB_PATH"
+          "$NPM_GLOBAL_BIN/pnpm" --version
 
       - name: Verify pnpm is available
         shell: bash
