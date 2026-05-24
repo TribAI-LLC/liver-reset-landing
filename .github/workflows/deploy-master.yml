@@ -26,11 +26,12 @@ jobs:
         with:
           node-version: 22
 
-      - name: Enable Corepack and activate pnpm
+      - name: Install pnpm from package.json
         shell: bash
         run: |
-          corepack enable
-          corepack install
+          set -e
+          PNPM_VERSION=$(node -p "require('./package.json').packageManager.match(/^pnpm@([^+]+)/)[1]")
+          npm install --global "pnpm@${PNPM_VERSION}"
 
       - name: Verify pnpm is available
         run: pnpm --version
