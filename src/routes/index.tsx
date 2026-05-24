@@ -313,9 +313,10 @@ function Index() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
-                  trackMetaPixel("InitiateCheckout", {
+                  trackMetaPixel("ViewContent", {
                     content_name: "Practical Manual to Improve Liver Health in 30 Days",
                     content_type: "product",
+                    content_category: "offer",
                     currency: "USD",
                     value: corePrice,
                   })
@@ -343,9 +344,10 @@ function Index() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() =>
-                  trackMetaPixel("InitiateCheckout", {
+                  trackMetaPixel("ViewContent", {
                     content_name: "Your Ultimate Liver Health Collection",
                     content_type: "product",
+                    content_category: "offer",
                     currency: "USD",
                     value: bundlePrice,
                   })
