@@ -64,6 +64,12 @@ export const Route = createRootRoute({
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const ga4Code = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-L3SBKGP6ST');`;
+
   const metaPixelCode = `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -79,6 +85,8 @@ fbq('track', 'PageView');`;
     <html lang="en">
       <head>
         <HeadContent />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-L3SBKGP6ST"></script>
+        <script dangerouslySetInnerHTML={{ __html: ga4Code }} />
         <script dangerouslySetInnerHTML={{ __html: metaPixelCode }} />
       </head>
       <body>
