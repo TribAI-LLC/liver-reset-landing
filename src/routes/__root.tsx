@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import favicon from "../assets/favicon.png";
 
 function NotFoundComponent() {
   return (
@@ -29,16 +30,28 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Practical Manual to Improve Liver Health in 30 Days" },
+      {
+        name: "description",
+        content:
+          "Practical Manual to Improve Liver Health in 30 Days: a structured guide with nutrition, movement, habits, and consistency tools.",
+      },
+      { name: "author", content: "Lucy Durninhgam" },
+      { property: "og:title", content: "Practical Manual to Improve Liver Health in 30 Days" },
+      {
+        property: "og:description",
+        content:
+          "Practical Manual to Improve Liver Health in 30 Days: a structured guide with nutrition, movement, habits, and consistency tools.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      {
+        rel: "icon",
+        type: "image/png",
+        href: favicon,
+      },
       {
         rel: "stylesheet",
         href: appCss,
